@@ -16,17 +16,17 @@ $GLOBALS["config"] = array(
 
         ),
 
-        
+
 
 	"remember" => array(
 
 		'cookies_name' => 'villagemarket_user',
 
-		'cookies_expiry' => 604800		
+		'cookies_expiry' => 604800
 
-        ),
+  ),
 
-        
+
 
 	"session" => array(
 
@@ -123,7 +123,7 @@ require_once (ROOT_PATH . "functions/redirect.php");
 
 
 
-// check if user was previously logged on 
+// check if user was previously logged on
 
 if(Cookie::exists(Config::get('remember/cookies_name')) && !Session::exists(Config::get('session/session_name'))){
 
@@ -132,10 +132,9 @@ if(Cookie::exists(Config::get('remember/cookies_name')) && !Session::exists(Conf
  	$hashCheck = DB::getInstance()->get('user_session', array('hash', '=', $hash));
 
 
-
  	if($hashCheck->count()){
 
- 		$user = new User($hashCheck->first()->UserId);
+ 		$user = new User($hashCheck->first()->customer_id);
 
  		$user->login();
 
