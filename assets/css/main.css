@@ -2404,3 +2404,12 @@ input.num-product::-webkit-inner-spin-button {
   border-top: solid 4px #56164c;
   border-radius: 10px;
 }
+
+.dashboard-menu{
+  padding:10px;
+  border-bottom: 1px solid rgba(0,0,0,.1);
+}
+
+.smal{
+  font-size:10px;
+}

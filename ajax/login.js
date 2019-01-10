@@ -69,7 +69,7 @@ $('document').ready(function(){
                     if(response.response == 'true'){
                         $("#login").html('<img src="assets/img/loader.gif">&ensp;Sign in...');
                         $("#login").attr("disabled", true);
-                        window.location.href = '?pg=dashboard';
+                        window.location.href = '?pg=orders';
                     }else{
                         $("#error").fadeIn(1000,function(){
                           error_alert(response.response);

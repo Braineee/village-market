@@ -98,13 +98,16 @@
 						</ul>
 					</nav>
 				</div>
+				&ensp;
+				&ensp;
+				&ensp;
 
 				<!-- Header Icon -->
 				<div class="header-icons">
 					<a href="#" class="header-wrapicon1 dis-block" style="color:#56164c;">
 						 <img src="images/icons/icon-header-01.png" class="header-icon1" alt="ICON"> &nbsp;
 						 <?php
-							 isset($username)? $msg = "<span class='purple'>{$username} | &nbsp;<a href='?pg=logout'>logout</a></sapn>"  :  $msg = "<span class=><a href='?pg=login'>Sign In</a></sapn>";
+							 isset($username)? $msg = "<span class='purple'><a href='?pg=orders'>{$username}</a>"  :  $msg = "<span class=><a href='?pg=login'>Sign In</a></sapn>";
 							 echo $msg;
 						 ?>
 					</a>
@@ -217,7 +220,7 @@
 						<div class="topbar-child2-mobile">
 							<div class="topbar-language rs1-select2">
 								<?php
-									isset($username)? $msg = "<span class='purple'>{$username}</sapn>"  :  $msg = "<span class=><a href='?pg=login'>Sign In</a></sapn>";
+									isset($username)? $msg = "<span class='purple'><a href='?pg=dashboard'>{$username}</a> &nbsp; | &nbsp;<a href='?pg=logout'>logout</a></sapn>"  :  $msg = "<span class=><a href='?pg=login'>Sign In</a></sapn>";
 									echo $msg;
 								?>
 							</div>

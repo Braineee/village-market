@@ -1,6 +1,6 @@
 <?php
 //get the configuration for the local server
-require_once ("../config/Config.php");
+require_once ("config/Config.php");
 require_once (ROOT_PATH . "core/init.php");
 
 //process the billing
@@ -86,6 +86,8 @@ if(Input::exists()){
                   ->create('orders', array(
                     'order_id' => $generate_order_id,
                     'customer_id' => $_SESSION['user_id'],
+                    'nos_of_item' => count($_SESSION['cart']),
+                    'total' => $_SESSION['grand_total'],
                     'order_status_code' => 1,
                     'date_order_placed' =>  date('Y-m-d')
                    ));
@@ -131,8 +133,8 @@ if(Input::exists()){
             }
 
           }catch(Exception $e){
-            //die('<a href="?pg=home" class="btn btn-success">Goto homepage</a>')
-            die($e->getMessage());
+            die('<a href="?pg=home" class="btn btn-success">Goto homepage</a>');
+            //die($e->getMessage());
           }
 
         }else{// user is not logged in create a new user and save billing details
@@ -224,6 +226,8 @@ if(Input::exists()){
               ->create('orders', array(
                 'order_id' => $generate_order_id,
                 'customer_id' => $customer_details->customer_id,
+                'nos_of_item' => count($_SESSION['cart']),
+                'total' => $_SESSION['grand_total'],
                 'order_status_code' => 1,
                 'date_order_placed' =>  date('Y-m-d')
                ));
@@ -269,15 +273,11 @@ if(Input::exists()){
             }
 
           }catch(Exception $e){
-            //die('<a href="?pg=home" class="btn btn-success">Goto homepage</a>')
-            die($e->getMessage());
+            die('<a href="?pg=home" class="btn btn-success">Goto homepage</a>');
+            //die($e->getMessage());
           }
         }
       }
     }
-  }else{
-    die('<a href="?pg=checkout" class="btn btn-success">Click this button to checkout</a>');
   }
-}else{
-  die('<a href="?pg=home" class="btn btn-success">Click this button to go to homepage</a>');
 }

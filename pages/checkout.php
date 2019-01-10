@@ -289,7 +289,8 @@ include 'controller/proccess_billing.php';
                         <?php
                             }
                           }catch(Exception $e){
-                              die('<a href="?pg=home" class="btn btn-success">Goto homepage</a>');
+                            //die($e->getMessage());
+                            die('<a href="?pg=home" class="btn btn-success">Goto homepage</a>');
                           }
                         ?>
                       </ul>
