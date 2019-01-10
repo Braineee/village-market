@@ -27,7 +27,7 @@ require_once (ROOT_PATH . "core/init.php");
           $get_order_details = DB::getInstance()->query($query);
 
           if($get_order_details->count() > 0){
-            
+
             $order_details = $get_order_details->results();
             echo "<div class='alert alert-dismissable alert-success'>
                       <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
@@ -37,10 +37,6 @@ require_once (ROOT_PATH . "core/init.php");
                           <li><i class='fa fa-check'></i>&ensp;<strong>Thank you. Your order has been received, please proceed with your payment</strong></li>
 
                   </div>";
-            $_SESSION['cart'] = array();
-      			$_SESSION['grand_total'] = 0;
-      			$_SESSION['shipping_option'] = array();
-
           }else{
             die("<a href='?pg=checkout' class='btn btn-success'>Please click this button to checkout</a>");
           }
@@ -240,6 +236,10 @@ require_once (ROOT_PATH . "core/init.php");
 	</section>
   </form>
 <?php
+
   //delete the cart, shipping_method, grand_total,
+  $_SESSION['cart'] = array();
+  $_SESSION['grand_total'] = 0;
+  $_SESSION['shipping_option'] = array();
 
 ?>

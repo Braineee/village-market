@@ -19,9 +19,6 @@ if (isset($headers['CsrfToken'])) {
 }
 
 
-
-
-
 if(isset($_POST)){
         //extract post
         extract($_POST);
