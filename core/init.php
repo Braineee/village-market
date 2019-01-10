@@ -14,7 +14,7 @@ $GLOBALS["config"] = array(
 
 		'db' => 'villagemarket'
 
-        ),
+  ),
 
 
 
@@ -22,7 +22,7 @@ $GLOBALS["config"] = array(
 
 		'cookies_name' => 'villagemarket_user',
 
-		'cookies_expiry' => 604800
+		'cookies_expiry' => 86400// keep the user loggedin for a day
 
   ),
 
@@ -43,9 +43,6 @@ $GLOBALS["config"] = array(
 // initiate session
 
 session_start();
-
-
-
 
 //initialize security measures for the session
 
