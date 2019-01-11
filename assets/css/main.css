@@ -2413,3 +2413,7 @@ input.num-product::-webkit-inner-spin-button {
 .smal{
   font-size:10px;
 }
+
+#print_nav{
+  display:none;
+}

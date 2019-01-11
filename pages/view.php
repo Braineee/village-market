@@ -44,7 +44,7 @@ try{
 
 
 
-<div class="container margin-top-40">
+<div class="container margin-top-40 dashboard_heading">
   <h3 class="purple"><strong>Dashboard</strong></h3>
   <hr>
 </div>
@@ -52,7 +52,7 @@ try{
 <section class="">
       <div class="container">
           <div class="row">
-              <div class="col-md-3 col-sm-12 checkout-padding">
+              <div class="col-md-3 col-sm-12 checkout-padding dashboard_content">
                 <?php
                   include "inc/dashboard_navbar.php";
                 ?>
@@ -139,7 +139,8 @@ try{
                               </td>
                           </tr>
                       </table>
-
+                      <!-- print -->
+                      <button type="button" class="btn btn-success" onclick="print()" name="button">Print</button>
                   </div>
               </div>
           </div>

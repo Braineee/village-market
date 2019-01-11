@@ -38,3 +38,30 @@
 <!--===============================================================================================-->
 	<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/vendor/jquery/jquery-3.2.1.min.js"></script>
 </head>
+<!-- print styling -->
+<style>
+@media print{
+	body{
+		font-size: 11px;
+	}
+	.dashboard_content{
+		display: none;
+	}
+	footer{
+		display: none;
+	}
+	.btn{
+		display: none;
+	}
+	.dashboard_heading{
+		display: none;
+	}
+	.btn-show-menu{
+		display: none;
+	}
+	#print_nav{
+		display: block;
+	}
+
+}
+</style>

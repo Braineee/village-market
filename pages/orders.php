@@ -79,7 +79,6 @@ $users_order = $get_users_order->results();
                             }
                           ?>
                       </table>
-
                   </div>
               </div>
           </div>

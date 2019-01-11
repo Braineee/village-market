@@ -12,6 +12,8 @@ $user = new User(); //current user
 // TODO! : check if the user is logged in
 if($user->isLoggedin()){
     $user_id = $user->data()->customer_id;
+    $user_firstname = $user->data()->firstname;
+    $user_lastname = $user->data()->lastname;
     $username = $user->data()->username;
     $user_email = $user->data()->email;
     $user_phone = $user->data()->phone;
