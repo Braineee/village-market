@@ -230,7 +230,7 @@
 						<div class="topbar-child2-mobile">
 							<div class="topbar-language rs1-select2">
 								<?php
-									isset($username)? $msg = "<span class='purple'><a href='?pg=dashboard'>{$username}</a> &nbsp; | &nbsp;<a href='?pg=logout'>logout</a></sapn>"  :  $msg = "<span class=><a href='?pg=login'>Sign In</a></sapn>";
+									isset($username)? $msg = "<span class='purple'><a href='?pg=home'>{$username}</a> &nbsp; | &nbsp;<a href='?pg=logout'>logout</a></sapn>"  :  $msg = "<span class=><a href='?pg=login'>Sign In</a></sapn>";
 									echo $msg;
 								?>
 							</div>
