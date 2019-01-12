@@ -155,6 +155,7 @@
 	<script type="text/javascript" src="<?php echo BASE_URL; ?>ajax/load_cart.js"></script>
 	<script type="text/javascript" src="<?php echo BASE_URL; ?>ajax/get_cart_item.js"></script>
 	<script type="text/javascript" src="<?php echo BASE_URL; ?>ajax/checkout.js"></script>
+	<script type="text/javascript" src="<?php echo BASE_URL; ?>ajax/update.js"></script>
 <!--===============================================================================================-->
 	<script src="<?php echo BASE_URL; ?>assets/js/main.js"></script>
 

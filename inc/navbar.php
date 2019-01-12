@@ -153,8 +153,8 @@
 			<!-- Logo moblie -->
 			<a href="?pg=home" class="logo-mobile">
 				<img src="images/icons/logo.png" alt="IMG-LOGO">
-				<span id="print_nav">Kpopvillage.com</span>
-				<span id="print_nav">info@Kpopvillagemarket.com</span>
+				<!--span id="print_nav">Kpopvillage.com</span>
+				<span id="print_nav">info@Kpopvillagemarket.com</span-->
 			</a>
 
 			<!--printing nav -->
@@ -162,7 +162,6 @@
 				<!-- Header Icon mobile -->
 				<div class="header-icons-mobile">
 					<a href="#" class="header-wrapicon1 dis-block">
-						Customer: <?= $user_firstname." ".$user_lastname;?>
 					</a>
 				</div>
 			</div>

@@ -1,6 +1,6 @@
 <?php
    if($user->isLoggedin()){
-        echo "<script> location.replace('?pg=dashboard'); </script>";
+        echo "<script> location.replace('?pg=orders'); </script>";
         die();
     }
 ?>

@@ -24,7 +24,6 @@ include 'controller/proccess_billing.php';
 
       if($user->isLoggedin() && $user_id){
         try{
-
           //get the user details
           $get_customer_details = DB::getInstance()->
           get('customers', array('customer_id','=',$user_id));
@@ -106,13 +105,13 @@ include 'controller/proccess_billing.php';
                               Street address
                               <abbr class="required" title="required">*</abbr>
                           </label>
-                          <small>NB: Include house number in address.</small>
                           <textarea
                             class="form-control"
                             id="address"
                             name="address"
                             rows="3"
                             value=""><?php if(isset($_POST['address'])){ echo $_POST['address']; }?></textarea>
+                          <small style="color:#f00;">NB: Include house number in address, kindly note that the address you provide here will be used as your billing and shipping address.</small>
                       </div>
                       <div class="form-group">
                           <label for="state">State</label>
@@ -191,8 +190,8 @@ include 'controller/proccess_billing.php';
                                 Street address
                                 <abbr class="required" title="required">*</abbr>
                             </label>
-                            <small>NB: Include house number in address.</small>
                             <textarea class="form-control" id="address" name="address" rows="3"></textarea>
+                            <small style="color:#f00;">NB: Include house number in address, kindly note that the address you provide here will be used as your billing and shipping address.</small>
                         </div>
                         <div class="form-group">
                             <label for="state">State</label>
