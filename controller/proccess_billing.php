@@ -175,7 +175,7 @@ if(Input::exists()){
             }
 
             //check if the email is unique
-            $get_email_unique = DB::getInstance()->get('customers', array('email','=',$_POST['password']));
+            $get_email_unique = DB::getInstance()->get('customers', array('email','=',$_POST['email']));
             if($get_email_unique->count() > 0){
               $validation_error = true;
               array_push($errors, "This email already exists");
