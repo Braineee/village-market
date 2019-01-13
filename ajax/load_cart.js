@@ -108,17 +108,24 @@ $('body').on('click','#update_cart', function(){
 
         dataType: 'json',
 
-        url:  'controller/addtocart.php',
+        url:  'controller/ddtocart.php',
 
         data: {name: nameProduct, id: skuProduct, quantity: quantityProduct},
-
+        beforeSend: function(){
+          $("#update_cart").html('<small>please wait...</small>');
+          $("#update_cart").attr("disabled", true);
+        },
         success: function(response){
             if(response == 'OK'){
                 get_cart_count();
                 load_cart();
+                $("#update_cart").html('<small>Update </small>');
+                $("#update_cart").attr("disabled", false);
                 swal(nameProduct, quantityProduct+" of "+ nameProduct +" has been added to cart !", "success");
             }else if(response == 'already_exist'){
                 get_cart_count();
+                $("#update_cart").html('<small>Update </small>');
+                $("#update_cart").attr("disabled", false);
                 swal(nameProduct, "Has already been added to cart", "info");
             }
         }

@@ -100,9 +100,9 @@ if(isset($_GET['cat']) && $_GET['cat'] != ''){
 				<div class="col-sm-6 col-md-8 col-lg-9 p-b-50">
 					<!--  -->
 					<div class="flex-sb-m flex-w p-b-35">
-						<span class="s-text8 p-t-5 p-b-5">
+						<!--span class="s-text8 p-t-5 p-b-5">
 							Showing 1–12 of 16 results
-						</span>
+						</span-->
                     </div>
                     <?php
                         if($get_cat->count() == 0){
@@ -158,10 +158,10 @@ if(isset($_GET['cat']) && $_GET['cat'] != ''){
                         ?>
                     </div>
 					<!-- Pagination -->
-					<div class="pagination flex-m flex-w p-t-26">
+					<!--div class="pagination flex-m flex-w p-t-26">
 						<a href="#" class="item-pagination flex-c-m trans-0-4 active-pagination">1</a>
 						<a href="#" class="item-pagination flex-c-m trans-0-4">2</a>
-					</div>
+					</div-->
 				</div>
 			</div>
 		</div>

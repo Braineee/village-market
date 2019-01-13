@@ -22,13 +22,20 @@ $('.add_cartt').on('click', function(){
         url:  'controller/addtocart.php',
 
         data: {name: nameProduct, id: skuProduct, quantity: quantityProduct},
-
+        beforeSend: function(){
+          $(".add_cartt").html('please wait...');
+          $(".add_cartt").attr("disabled", true);
+        },
         success: function(response){
             if(response == 'OK'){
                 get_cart_count();
+                $(".add_cartt").html('Add to Cart');
+                $(".add_cartt").attr("disabled", false);
                 swal(nameProduct, quantityProduct+" of "+ nameProduct +" has been added to cart !", "success");
             }else if(response == 'already_exist'){
                 get_cart_count();
+                $(".add_cartt").html('Add to Cart');
+                $(".add_cartt").attr("disabled", false);
                 swal(nameProduct, "Has already been added to cart", "info");
             }
         }
@@ -54,13 +61,20 @@ $('#add_quantity').on('click', function(){
         url:  'controller/addtocart.php',
 
         data: {name: nameProduct, id: skuProduct, quantity: quantityProduct},
-
+        beforeSend: function(){
+          $("#add_quantity").html('please wait...');
+          $("#add_quantity").attr("disabled", true);
+        },
         success: function(response){
             if(response == 'OK'){
                 get_cart_count();
+                $("#add_quantity").html('Add to Cart');
+                $("#add_quantity").attr("disabled", false);
                 swal(nameProduct, quantityProduct+" of "+ nameProduct +" has been added to cart !", "success");
             }else if(response == 'already_exist'){
                 get_cart_count();
+                $("#add_quantity").html('Add to Cart');
+                $("#add_quantity").attr("disabled", false);
                 swal(nameProduct, "Has already been added to cart", "info");
             }
         }
