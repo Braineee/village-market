@@ -1,3 +1,9 @@
+$.ajaxSetup({
+    headers : {
+        'CsrfToken': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
 
 $('#get_cart_item').on('click', function(){
     $.ajax({

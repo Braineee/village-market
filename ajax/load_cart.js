@@ -1,3 +1,9 @@
+$.ajaxSetup({
+    headers : {
+        'CsrfToken': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
 load_cart();
 
 function load_cart(){

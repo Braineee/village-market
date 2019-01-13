@@ -43,7 +43,7 @@ if(isset($_POST)){
               }
 
               extract($_POST);
-              
+
               if($validation_error == false){
                 try{
                   // update customer details, update if change occurs

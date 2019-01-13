@@ -1,3 +1,9 @@
+$.ajaxSetup({
+    headers : {
+        'CsrfToken': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
 $('document').ready(function(){
 
     //generate the captcha
@@ -28,7 +34,7 @@ $('document').ready(function(){
     });
 
 
-    
+
 
     $( "form" ).submit(function( e ) {
         e.preventDefault();
@@ -43,7 +49,7 @@ $('document').ready(function(){
                 $('#get_password').attr("disabled", true);
             }else if(number_ == ""){
                 $('.wrong-password').html('Please enter the code below');
-                
+
             }
         }else{
             $('#get_password').attr("disabled", false);

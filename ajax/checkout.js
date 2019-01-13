@@ -1,3 +1,9 @@
+$.ajaxSetup({
+    headers : {
+        'CsrfToken': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
 //on click of the proceed to checkout button
 $('body').on('click', '#proceed_to_checkout', function(){
     //check if the final_balance is available.

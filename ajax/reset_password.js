@@ -1,4 +1,9 @@
 $('document').ready(function(){
+  $.ajaxSetup({
+      headers : {
+          'CsrfToken': $('meta[name="csrf-token"]').attr('content')
+      }
+  });
     //check the password
     $('#password').on('change', function(){
         let password_ = $('#password').val();

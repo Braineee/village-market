@@ -1,3 +1,9 @@
+$.ajaxSetup({
+    headers : {
+        'CsrfToken': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
 get_cart_count();
 
 
@@ -10,11 +16,11 @@ $('.add_cartt').on('click', function(){
     $.ajax({
 
         type: 'POST',
-    
+
         dataType: 'json',
-    
+
         url:  'controller/addtocart.php',
-    
+
         data: {name: nameProduct, id: skuProduct, quantity: quantityProduct},
 
         success: function(response){
@@ -42,11 +48,11 @@ $('#add_quantity').on('click', function(){
     $.ajax({
 
         type: 'POST',
-    
+
         dataType: 'json',
-    
+
         url:  'controller/addtocart.php',
-    
+
         data: {name: nameProduct, id: skuProduct, quantity: quantityProduct},
 
         success: function(response){
@@ -67,9 +73,9 @@ function get_cart_count(){
     $.ajax({
 
         type: 'POST',
-    
+
         dataType: 'json',
-    
+
         url:  'controller/get_cart.php',
 
         success: function(response){
@@ -78,7 +84,3 @@ function get_cart_count(){
         }
     })
 }
-
-
-
-
