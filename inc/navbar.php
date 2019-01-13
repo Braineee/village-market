@@ -21,12 +21,12 @@
 				</div>
 
 				<span class="topbar-child1">
-					Welcome to kpopvillage Online market
+					Welcome to popvillage Online market
 				</span>
 
 				<div class="topbar-child2">
 					<span class="topbar-email">
-						<a href="mailto:info@kpopvillagemarket.com">info@kpopvillagemarket.com</a>
+						<a href="mailto:info@popvillagemarket.com">info@popvillagemarket.com</a>
 					</span>
 				</div>
 			</div>
@@ -153,8 +153,8 @@
 			<!-- Logo moblie -->
 			<a href="?pg=home" class="logo-mobile">
 				<img src="images/icons/logo.png" alt="IMG-LOGO">
-				<!--span id="print_nav">Kpopvillage.com</span>
-				<span id="print_nav">info@Kpopvillagemarket.com</span-->
+				<!--span id="print_nav">popvillage.com</span>
+				<span id="print_nav">info@popvillagemarket.com</span-->
 			</a>
 
 			<!--printing nav -->
@@ -222,7 +222,7 @@
 				<ul class="main-menu">
 					<li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
 						<span class="topbar-child1">
-							<a href="mailto:info@kpopvillagemarket.com">info@kpopvillagemarket.com</a>
+							<a href="mailto:info@popvillagemarket.com">info@popvillagemarket.com</a>
 						</span>
 					</li>
 

@@ -13,7 +13,7 @@
 						(+1) 96 716 6879<br>
 						(+1) 96 716 6879<br>
 						Email:<br>
-						<a href="mailto:info@kpopvillagemarket.com" style="color:#fff;">info@kpopvillagemarket.com</a>
+						<a href="mailto:info@popvillagemarket.com" style="color:#fff;">info@popvillagemarket.com</a>
 
 					</p>
 
