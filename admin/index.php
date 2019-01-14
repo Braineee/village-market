@@ -4,17 +4,19 @@ require_once ("config/Config.php");
 require_once (ROOT_PATH . "core/init.php");
 
 if (!isset($_GET["pg"]) || $_GET["pg"] == ""){
-    $_GET["pg"] = "dashbaord";
+    $_GET["pg"] = "login";
 }
 
-$user = new User(); //current user
+$admin = new User(); //current user
 
 // TODO! : check if the user is logged in
-if($user->isLoggedin()){
-    $user_id = $user->data()->customer_id;
+if($admin->isLoggedin()){
+    $admin_id = $admin->data()->customer_id;
 
-    $_SESSION['user_id'] = $user_id;
+    $_SESSION['admin_id'] = $admin_id;
 }
+
+//var_dump($admin->isLoggedin());
 
 // Check if pg exits
 if (isset($_GET["pg"])){
@@ -25,12 +27,13 @@ if (isset($_GET["pg"])){
 // include the header file
 include(ROOT_PATH . "inc/head.php");
 
-//include the navbar
-include(ROOT_PATH . "inc/navbar.php");
+if($page_name != 'login'){
+  //include the navbar
+  include(ROOT_PATH . "inc/navbar.php");
 
-//include the sidebar
-include(ROOT_PATH . "inc/sidebar.php");
-
+  //include the sidebar
+  include(ROOT_PATH . "inc/sidebar.php");
+}
 //check the file
 $filename = ROOT_PATH ."pages/" . $page_name . ".php";
 
@@ -40,6 +43,7 @@ if (file_exists($filename)) {
 }else{
     include(ROOT_PATH . "pages/not_found.php");
 }
-
-//include footer
-include(ROOT_PATH . "inc/footer.php");
+if($page_name != 'login'){
+  //include footer
+  include(ROOT_PATH . "inc/footer.php");
+}

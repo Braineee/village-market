@@ -22,7 +22,7 @@ $GLOBALS["config"] = array(
 
 		'cookies_name' => 'villagemarket_admin',
 
-		'cookies_expiry' => 86400// keep the user loggedin for a day
+		'cookies_expiry' => 7200// keep the user loggedin for 2 hrs
 
   ),
 
