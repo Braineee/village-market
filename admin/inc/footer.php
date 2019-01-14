@@ -2,6 +2,7 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>assets/js/jquery-3.2.1.min">
+<link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>assets/js/bootstrap.min.js">
 <script src="<?= BASE_URL ?>assets/js/popper.min.js"></script>
 
 <!-- use online -->

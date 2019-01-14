@@ -2,32 +2,37 @@
   <div class="row">
     <nav class="col-md-2 d-none d-md-block bg-light sidebar">
       <div class="sidebar-sticky">
+        <div class="text-center">
+          <small>welcome</small><br>
+          <span><?= $admin_firstname." ". $admin_lastname ?></span>
+          <hr>
+        </div>
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" href="#">
+            <a class="nav-link <?php if($_GET['pg'] == 'dashboard'){ echo 'active'; }?>" href="?pg=dashboard">
               <span data-feather="home"></span>
               Dashboard <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link <?php if($_GET['pg'] == 'orders'){ echo 'active'; }?>" href="?pg=orders">
               <span data-feather="file"></span>
               Orders
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link <?php if($_GET['pg'] == 'products'){ echo 'active'; }?>" href="?pg=products">
               <span data-feather="shopping-cart"></span>
               Products
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link <?php if($_GET['pg'] == 'customers'){ echo 'active'; }?>" href="?pg=customers">
               <span data-feather="users"></span>
               Customers
             </a>
           </li>
-          <li class="nav-item">
+          <!--li class="nav-item">
             <a class="nav-link" href="#">
               <span data-feather="bar-chart-2"></span>
               Reports
@@ -71,7 +76,7 @@
               <span data-feather="file-text"></span>
               Year-end sale
             </a>
-          </li>
+          </li-->
         </ul>
       </div>
     </nav>

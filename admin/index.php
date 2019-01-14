@@ -11,9 +11,15 @@ $admin = new User(); //current user
 
 // TODO! : check if the user is logged in
 if($admin->isLoggedin()){
-    $admin_id = $admin->data()->customer_id;
+    $admin_id = $admin->data()->staff_id;
+    $admin_firstname = $admin->data()->firstname;
+    $admin_lastname = $admin->data()->lastname;
+    $admin_email = $admin->data()->email;
+    $admin_phone = $admin->data()->phone;
 
     $_SESSION['admin_id'] = $admin_id;
+}else{
+    $_GET["pg"] = "login";// go to the login page if the user is not logged in
 }
 
 //var_dump($admin->isLoggedin());

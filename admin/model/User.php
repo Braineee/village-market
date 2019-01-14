@@ -94,7 +94,7 @@ class User {
 
 		if(!$id && $this->isLoggedin()){
 
-			$id = $this->data()->customer_id;
+			$id = $this->data()->staff_id;
 
 		}
 
@@ -146,9 +146,9 @@ class User {
 
 		if($user){
 
-			$field = (is_numeric($user)) ? 'customer_id' : 'email';
+			$field = (is_numeric($user)) ? 'staff_id' : 'email';
 
-			$data = $this->_db->get('customers', array($field, '=', $user));
+			$data = $this->_db->get('staffs', array($field, '=', $user));
 
 
 
@@ -188,7 +188,7 @@ class User {
 
 			//log in the user
 
-			Session::put($this->_sessionName, $this->data()->customer_id);
+			Session::put($this->_sessionName, $this->data()->staff_id);
 
 		}else{
 
@@ -200,11 +200,11 @@ class User {
 
 					if($this->data()->is_blocked == 0){
 
-						Session::put($this->_sessionName, $this->data()->customer_id);
+						Session::put($this->_sessionName, $this->data()->staff_id);
 
 						if($remember){
 
-							$customer_id = $this->data()->customer_id;
+							$staff_id = $this->data()->staff_id;
 
 							$DateLoggedIn = date('Y-m-d');
 
@@ -214,7 +214,7 @@ class User {
 
 
 
-							$hashCheck = DB::getInstance()->query("SELECT * FROM user_session WHERE customer_id LIKE '$customer_id'");
+							$hashCheck = DB::getInstance()->query("SELECT * FROM user_session WHERE staff_id LIKE '$staff_id'");
 
 
 
@@ -222,7 +222,7 @@ class User {
 
 								//
 
-								$log_user = DB::getInstance()->query("INSERT INTO user_session (customer_id, Hash, DateLoggedin, TimeLoggedin)VALUES('$customer_id','$hash','$DateLoggedIn', '$TimeLoggedIn')");
+								$log_user = DB::getInstance()->query("INSERT INTO user_session (staff_id, Hash, DateLoggedin, TimeLoggedin)VALUES('$staff_id','$hash','$DateLoggedIn', '$TimeLoggedIn')");
 
 
 
@@ -312,9 +312,9 @@ class User {
 
 	public function logout(){
 
-		$staff_id = $this->data()->customer_id;
+		$staff_id = $this->data()->staff_id;
 
-		$this->_db->query("DELETE from user_session where customer_id like '$staff_id'");
+		$this->_db->query("DELETE from user_session where staff_id like '$staff_id'");
 
 
 
