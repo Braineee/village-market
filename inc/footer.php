@@ -8,12 +8,19 @@
 
 				<div>
 					<p class="s-text7 w-size27">
-						8th floor, 379 Hudson St, New York, NY 10018<br>
+						17,Akintoye Shogunle street,
+
+						off john olugbo,
+
+						off toyin street,
+
+						Ikeja,
+
+						Lagos, Nigeria.<br>
 						Or call: <br>
-						(+1) 96 716 6879<br>
-						(+1) 96 716 6879<br>
+						<a href='tel:09093307201' style="color:#fff;">(+234) 09093307201</a><br>
 						Email:<br>
-						<a href="mailto:info@popvillagemarket.com" style="color:#fff;">info@popvillagemarket.com</a>
+						<a href="mailto:info@popfloodgate.com" style="color:#fff;">info@popfloodgate.com</a>
 
 					</p>
 

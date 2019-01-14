@@ -3,6 +3,7 @@
 require_once ("config/Config.php");
 require_once (ROOT_PATH . "core/init.php");
 
+
 //process the billing
 if(Input::exists()){
   if(isset($_POST['form_token'])){// check if the there is a form token

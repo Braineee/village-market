@@ -14,7 +14,7 @@ include 'controller/proccess_billing.php';
       }
 
       // verify if there is a shippment option available
-      if(isset($_SESSION['shipping_option']) && $_SESSION['shipping_option'] == []){
+      if(empty($_SESSION['shipping_option'])){
         die('<a href="?pg=cart" class="btn btn-success">Click this button to select shipping method</a>');
       }else{
         //verify the grand total
