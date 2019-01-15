@@ -37,9 +37,9 @@ $('document').ready(function(){
                   <td>${ value.product_category }</td>
                   <td>&#8358;${ formatMoney(value.product_price) }</td>
                   <td>
-                    <button type="button" name="button" data-id="${ value.id }" class="btn btn-info btn-sm"><span data-feather="eye" id="view-product"></span>&nbsp;View</button>
-                    <button type="button" name="button" data-id="${ value.id }" class="btn btn-danger btn-sm"><span data-feather="trash" id="delete-product"></span>&nbsp;Delete</button>
-                    <button type="button" name="button" data-id="${ value.id }" class="btn btn-warning btn-sm"><span data-feather="flag" id="flag-out-product"></span>&nbsp;Flag as out of stock</button>
+                    <button type="button" name="button" data-id="${ value.id }" class="btn btn-outline-info btn-sm"><span data-feather="eye" id="view-product"></span>&nbsp;View</button>
+                    <button type="button" name="button" data-id="${ value.id }" class="btn btn-outline-danger btn-sm"><span data-feather="trash" id="delete-product"></span>&nbsp;Delete</button>
+                    <button type="button" name="button" data-id="${ value.id }" class="btn btn-outline-warning btn-sm"><span data-feather="flag" id="flag-out-product"></span>&nbsp;Flag as out of stock</button>
                   </td>
               </tr>
               `;
@@ -47,7 +47,7 @@ $('document').ready(function(){
       $("#product-table").html(row);
     }
 
-    //view product
+    //create product
 
 
     // function money formart
