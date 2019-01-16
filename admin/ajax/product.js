@@ -36,14 +36,19 @@ $('document').ready(function(){
                   <td>${ value.product_category }</td>
                   <td>&#8358;${ formatMoney(value.product_price) }</td>
                   <td>
-                    <button type="button" name="button" data-id="${ value.id }" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#view-product-modal" id="view-product"><i class="fa fa-eye"></i></button>
-                    <button type="button" name="button" data-id="${ value.id }" class="btn btn-outline-success btn-sm" id="edit-product"><i class="fa fa-edit"></i></button>
-                    <button type="button" name="button" data-id="${ value.id }" class="btn btn-outline-danger btn-sm" id="delete-product"><i class="fa fa-trash"></i></button>
-                    <button type="button" name="button" data-id="${ value.id }" class="btn btn-outline-warning btn-sm" id="flag-out-product"><i class="fa fa-flag"></i></button>
-                  </td>
-              </tr>
-              `;
+                    <button type="button" name="button" data-id="${ value.id }" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#view-product-modal" id="view-product"><i class="fa fa-eye"></i></button>
+                    <button type="button" name="button" data-id="${ value.id }" class="btn btn-success btn-sm" id="edit-product"><i class="fa fa-edit"></i></button>
+                    <button type="button" name="button" data-id="${ value.id }" class="btn btn-danger btn-sm" id="delete-product"><i class="fa fa-trash"></i></button> `;
+        if(value.product_out_of_stock == 0){
+        row+=       `<button type="button" name="button" data-id="${ value.id }" class="btn btn-danger btn-sm" id="flag-out-product"><i class="fa fa-flag"></i></button>`;
+        }else{
+        row+=       `<button type="button" name="button" data-id="${ value.id }" class="btn btn-warning btn-sm" id="flag-in-product"><i class="fa fa-flag"></i></button>`;
+        }
+
+        row+=   `</td>
+              </tr>`;
       });
+
       $("#product-table").html(row);
     }
 
@@ -72,7 +77,7 @@ $('document').ready(function(){
 
     //delete product
     $('body').on('click','#delete-product', function(){
-      var id = $(this).attr('data-id');
+      let id = $(this).attr('data-id');
       swal({
             title: 'Confirm Delete ',
             text: "Do you really want to delete this product permanently?",
@@ -83,15 +88,17 @@ $('document').ready(function(){
           }, function(){
             $.ajax({
               type: 'POST',
-              url: 'controller/DeleteProduct.php',
+              url: 'controller/eleteProduct.php',
               dataType: 'json',
               data: {id: id},
+              beforeSend: function(){
+                $("#delete-product").html('....');
+                $("#delete-product").attr("disabled", true);
+              },
               success: function(response){
-                alert(response);
                 if(response == 'deleted'){
-                  toastr.success('Product has been deleted permanently','Deleted!' ,{timeOut:4000});
-                  //swal("Deleted!", "Product has been deleted permanently", "success");
                   get_products();
+                  toastr.success('Product has been deleted permanently','Deleted!' ,{timeOut:4000});
                 }else{
                   toastr.error('Product was not deleted','Failed!' ,{timeOut:4000});
                 }
@@ -100,9 +107,73 @@ $('document').ready(function(){
         });
     });
 
+    //flag out of stock
+    $('body').on('click', '#flag-out-product', function(){
+      let id = $(this).attr('data-id');
+      swal({
+            title: 'Confirm',
+            text: "Do you really want to flag this product as out of stock?",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, Flag this product!',
+            showLoaderOnConfirm: true
+          }, function(){
+            $.ajax({
+              type: 'POST',
+              url: 'controller/FlagOutOfStock.php',
+              dataType: 'json',
+              data: {id: id},
+              beforeSend: function(){
+                $("#flag-out-product").html('....');
+                $("#flag-out-product").attr("disabled", true);
+              },
+              success: function(response){
+                if(response == 'flaged_out'){
+                  get_products();
+                  toastr.success('Product has been flagged as out of stock','Flagged!' ,{timeOut:4000});
+                }else{
+                  toastr.error('Product was not flagged','Failed!' ,{timeOut:4000});
+                }
+              }
+            });
+        });
+    });
+
+    //flag in stock
+    $('body').on('click', '#flag-in-product', function(){
+      let id = $(this).attr('data-id');
+      swal({
+            title: 'Confirm',
+            text: "Do you really want to flag this product as in stock?",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, Flag this product!',
+            showLoaderOnConfirm: true
+          }, function(){
+            $.ajax({
+              type: 'POST',
+              url: 'controller/FlagInStock.php',
+              dataType: 'json',
+              data: {id: id},
+              beforeSend: function(){
+                $("#flag-in-product").html('....');
+                $("#flag-in-product").attr("disabled", true);
+              },
+              success: function(response){
+                if(response == 'flaged_in'){
+                  get_products();
+                  toastr.success('Product has been flagged as in stock','Flagged!' ,{timeOut:4000});
+                }else{
+                  toastr.error('Product was not flagged','Failed!' ,{timeOut:4000});
+                }
+              }
+            });
+        });
+    });
+
 
     //create product
-    $('#create-product_').on('click', function(e){
+    $('form[name="create-product-form"]').on('submit', function(e){
       e.preventDefault();
       //verify the inputes
       if(
@@ -119,11 +190,17 @@ $('document').ready(function(){
       }
 
       if(input_err == false){
-        var formData = new FormData($('form[name="create-product-form"]').submit());
+        var formData = new FormData();
+        formData.append('product_name', $('#product_name').val());
+        formData.append('product_price', $('#product_price').val());
+        formData.append('product_category', $('#product_category').val());
+        formData.append('product_desc', $('#product_desc').val());
+        formData.append('product_picture', $('#product_image').prop("files")[0]);
+        //console.log(formData);
         $.ajax({
           type: 'POST',
           url: 'controller/CreateProduct.php',
-          data:formData,
+          data: formData,
           datatype:'script',
           cache:false,
           contentType: false,
@@ -133,13 +210,24 @@ $('document').ready(function(){
             $("#create-product").html('Creating...');
             $("#create-product").attr("disabled", true);
           },
-          success: function(data) {
-
+          success: function(response) {
+            if(response.success == 'created'){
+              $("#create-product").html('Create This Product');
+              $("#create-product").attr("disabled", false);
+              $('#product_name').val('');
+              $('#product_price').val('');
+              $('#product_category').val('');
+              $('#product_desc').val('');
+              $('#product_image').val('');
+              toastr.success('Product has been created','Data Saved' ,{timeOut:4000});
+            }else{
+              toastr.error(response.error,'Failed!' ,{timeOut:4000});
+              $("#create-product").html('Create This Product');
+              $("#create-product").attr("disabled", false);
+            }
           },
-          error: function(data) {
+        });
 
-          }
-          });
       }
     });
 

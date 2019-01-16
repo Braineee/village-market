@@ -34,7 +34,8 @@ try{
         'product_name' => $products->product_name,
         'product_description' => $products->product_description,
         'product_category' => $products->category_name,
-        'product_price' => $products->product_price
+        'product_price' => $products->product_price,
+        'product_out_of_stock' => $products->out_of_stock
     ];
   }
   exit(json_encode(['data' => $json, 'count' => $get_list_of_products->count()]));

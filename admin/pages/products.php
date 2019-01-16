@@ -6,12 +6,24 @@
         <button class="btn btn-sm btn-outline-secondary">Share</button>
         <button class="btn btn-sm btn-outline-secondary">Export</button>
       </div-->
-      <button class="btn btn-sm btn-success">
+      <a href="?pg=create_product" class="btn btn-sm btn-success">
         <span data-feather="plus"></span>
         Product
-      </button>
+      </a>
     </div>
   </div>
+  <?php
+    if(Session::exists('product_created')){
+      echo "<div class='alert alert-dismissable alert-success'>
+                <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                    <span aria-hidden='true'>&times;</span>
+                </button>
+
+                    <li><i class='fa fa-check'></i>&ensp;<strong>". Session::flash('product_created') . "</strong></li>
+
+            </div>";
+    }
+  ?>
   <div class="table-responsive">
     <table class="table table-striped table-sm">
       <thead>
@@ -92,6 +104,4 @@
     </div>
   </div>
 </div>
-
 <script type="text/javascript" src="<?php echo BASE_URL; ?>ajax/product.js"></script>
-<script type="text/javascript" src="<?php echo BASE_URL; ?>ajax/pre_save.js"></script>
