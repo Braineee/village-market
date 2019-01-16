@@ -40,7 +40,7 @@ try{
   $query = "
     SELECT products.*, ref_product_category.* FROM Products
     INNER JOIN ref_product_category ON products.product_category = ref_product_category.category_code
-    WHERE product_id = {$id}
+    WHERE products.product_id = {$id}
   ";
   //run query
   $get_list_of_products = DB::getInstance()->query($query);
