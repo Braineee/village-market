@@ -2417,3 +2417,17 @@ input.num-product::-webkit-inner-spin-button {
 #print_nav{
   display:none;
 }
+
+.over-lay {
+  text-align: center;
+  font-weight: bolder;
+  border-radius: 20px;
+  background-color: #f00;
+  padding:10px;
+  color:#fff;
+  font-weight:30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

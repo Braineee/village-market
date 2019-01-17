@@ -106,3 +106,45 @@ body {
 .border-left-show{
   border-left: 1px solid rgba(0,0,0,.1);
 }
+
+.label-warning{
+  background-color: #ffc107;
+  font-size: 11px;
+  color: #fff;
+  padding: 3px;
+  border-radius: 50px;
+}
+
+.label-success{
+  background-color: #218838;
+  font-size: 11px;
+  color: #fff;
+  padding: 3px;
+  border-radius: 50px;
+}
+
+.label-danger{
+  background-color: #c82333;
+  font-size: 11px;
+  color: #fff;
+  padding: 3px;
+  border-radius: 50px;
+}
+
+.label-primary{
+  background-color: #0069d9;
+  font-size: 11px;
+  color: #fff;
+  padding: 3px;
+  border-radius: 50px;
+}
+
+.payment-option-background{
+  padding: 20px;
+  background: #D3CCE3;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #fafafa, #f1f1f1);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #fafafa, #f1f1f1); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  border: solid 1px  #e0e0e0;
+  border-top: solid 4px #56164c;
+  border-radius: 10px;
+}

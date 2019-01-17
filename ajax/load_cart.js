@@ -108,7 +108,7 @@ $('body').on('click','#update_cart', function(){
 
         dataType: 'json',
 
-        url:  'controller/ddtocart.php',
+        url:  'controller/addtocart.php',
 
         data: {name: nameProduct, id: skuProduct, quantity: quantityProduct},
         beforeSend: function(){

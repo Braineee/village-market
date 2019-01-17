@@ -128,19 +128,25 @@ if(isset($_GET['cat']) && $_GET['cat'] != ''){
 								<div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
 									<img src="images/product_picture/<?php echo $cat_items->product_picture; ?>" height="300px" width="900px" alt="IMG-PRODUCT">
 
+                  <?php
+                    if($cat_items->out_of_stock == 1)
+                      {
+                        echo '<div class="over-lay">OUT OF STOCK!</div>';
+                      }else{
+                  ?>
 									<div class="block2-overlay trans-0-4">
 										<a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
 											<i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
 											<i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
 										</a>
-
-										<div class="block2-btn-addcart w-size1 trans-0-4">
+                    <div class="block2-btn-addcart w-size1 trans-0-4">
 											<!-- Button -->
 											<button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4 add_cartt" data-quantity="1" data-name="<?php echo $cat_items->product_name?>" data-id="<?php echo $cat_items->product_id ?>">
 												Add to Cart
 											</button>
 										</div>
-									</div>
+                  </div>
+                  <?php } ?>
 								</div>
 
 								<div class="block2-txt p-t-20">

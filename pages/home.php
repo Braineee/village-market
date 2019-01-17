@@ -145,7 +145,12 @@
                             <div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
 
                                 <img src="images/product_picture/<?php echo $all_item->results()[$counter]->product_picture ?>" height="300px" width="900px" alt="IMG-PRODUCT">
-
+                                <?php
+                                  if($all_item->results()[$counter]->out_of_stock == 1)
+                                    {
+                                      echo '<div class="over-lay">OUT OF STOCK!</div>';
+                                    }else{
+                                ?>
                                 <div class="block2-overlay trans-0-4">
                                     <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
                                         <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
@@ -159,6 +164,7 @@
                                         </button>
                                     </div>
                                 </div>
+                              <?php } ?>
                             </div>
 
                             <div class="block2-txt p-t-20">
