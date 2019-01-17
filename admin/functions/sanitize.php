@@ -7,19 +7,19 @@ function escape($string){
 function sanitize($input, $type){
 	if($type == "int"){
 
-		$input_filter = str_replace(['~',"\\",'/',':','*','?','<>','|','=','~','+','^','(',')'],'',$input);
+		$input_filter = str_replace(['~',"\\",'/',':','*','?','<>','|','=','~','+','^'],'',$input);
 		$input_sanitized = filter_var($input_filter, FILTER_VALIDATE_INT);
 		return trim($input_sanitized);
 
 	}elseif($type == 'string'){
 
-		$input_filter = str_replace(['~',"\\",'/',':','*','?','<>','|','=','~','+','^','(',')'],'',$input);
+		$input_filter = str_replace(['~',"\\",'/',':','*','?','<>','|','=','~','+','^'],'',$input);
 		$input_sanitized = filter_var($input_filter, FILTER_SANITIZE_STRING);
 		return trim($input_sanitized);
 
 	}elseif($type == 'float'){
 
-		$input_filter = str_replace(['~',"\\",'/',':','*','?','<>','|','=','~','+','^','(',')'],'',$input);
+		$input_filter = str_replace(['~',"\\",'/',':','*','?','<>','|','=','~','+','^'],'',$input);
         $input_sanitized = filter_var($input_filter, FILTER_VALIDATE_FLOAT);
 		return trim($input_sanitized);
 

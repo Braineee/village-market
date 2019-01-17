@@ -37,7 +37,7 @@ $('document').ready(function(){
                   <td>&#8358;${ formatMoney(value.product_price) }</td>
                   <td>
                     <button type="button" name="button" data-id="${ value.id }" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#view-product-modal" id="view-product"><i class="fa fa-eye"></i></button>
-                    <button type="button" name="button" data-id="${ value.id }" class="btn btn-success btn-sm" id="edit-product"><i class="fa fa-edit"></i></button>
+                    <a href="?pg=edit-product&product=${ value.id }" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
                     <button type="button" name="button" data-id="${ value.id }" class="btn btn-danger btn-sm" id="delete-product"><i class="fa fa-trash"></i></button> `;
         if(value.product_out_of_stock == 0){
         row+=       `<button type="button" name="button" data-id="${ value.id }" class="btn btn-danger btn-sm" id="flag-out-product"><i class="fa fa-flag"></i></button>`;
@@ -224,6 +224,62 @@ $('document').ready(function(){
               toastr.error(response.error,'Failed!' ,{timeOut:4000});
               $("#create-product").html('Create This Product');
               $("#create-product").attr("disabled", false);
+            }
+          },
+        });
+
+      }
+    });
+
+
+    // update product
+    $('form[name="update-product-form"]').on('submit', function(e){
+      e.preventDefault();
+      //verify the inputes
+      if(
+        $('#product_name').val() == "" ||
+        $('#product_price').val() == "" ||
+        $('#product_category').val() == "" ||
+        $('#product_desc').val() == "" ||
+        $('#product_image').val() == ""
+      ){
+        input_err = true;
+        error_alert('Please enter all required details needed to create this product.');
+      }else{
+        input_err = false;
+      }
+
+      if(input_err == false){
+        var formData = new FormData();
+        formData.append('product_name', $('#product_name').val());
+        formData.append('product_price', $('#product_price').val());
+        formData.append('product_category', $('#product_category').val());
+        formData.append('product_desc', $('#product_desc').val());
+        formData.append('product_picture', $('#product_image').prop("files")[0]);
+        //console.log(formData);
+        $.ajax({
+          type: 'POST',
+          url: 'controller/UpdateProduct.php',
+          data: formData,
+          datatype:'script',
+          cache:false,
+          contentType: false,
+          processData: false,
+          beforeSend: function(){
+            //$("#error").fadeOut();
+            $("#update-product").html('Updating...');
+            $("#update-product").attr("disabled", true);
+          },
+          success: function(response) {
+            if(response.success == 'updated'){
+              $("#update-product").html('Redirecting...');
+              $("#update-product").attr("disabled", true);
+              toastr.success('Product has been Updated','Data Saved' ,{timeOut:4000});
+              window.location.href="?pg=products";
+            }else{
+              toastr.error(response.error,'Failed!' ,{timeOut:4000});
+              $("#update-product").html('Update This Product');
+              $("#update-product").attr("disabled", false);
             }
           },
         });

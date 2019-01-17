@@ -23,6 +23,16 @@
 
             </div>";
     }
+    if(Session::exists('product_updated')){
+      echo "<div class='alert alert-dismissable alert-success'>
+                <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                    <span aria-hidden='true'>&times;</span>
+                </button>
+
+                    <li><i class='fa fa-check'></i>&ensp;<strong>". Session::flash('product_updated') . "</strong></li>
+
+            </div>";
+    }
   ?>
   <div class="table-responsive">
     <table class="table table-striped table-sm">
