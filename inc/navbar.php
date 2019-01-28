@@ -26,7 +26,7 @@
 
 				<div class="topbar-child2">
 					<span class="topbar-email">
-						<a href="mailto:info@popvillagemarket.com">info@popvillagemarket.com</a>
+						<a href="mailto:info@popvillagemarket.com" style="color:#fff;">info@popvillagemarket.com</a>
 					</span>
 				</div>
 			</div>
@@ -34,7 +34,7 @@
 			<div class="wrap_header">
 				<!-- Logo -->
 				<a href="?pg=home" class="logo">
-					<img src="images/icons/logo.png" width="40px" height="70px" alt="IMG-LOGO">
+					<img src="images/icons/logo_complete.png" width="120px" alt="popvillagemarket">
 				</a>
 
 				<!-- Menu -->
@@ -152,7 +152,8 @@
 		<div class="wrap_header_mobile">
 			<!-- Logo moblie -->
 			<a href="?pg=home" class="logo-mobile">
-				<img src="images/icons/logo.png" alt="IMG-LOGO">
+				<!--img src="images/icons/logo.png" alt="IMG-LOGO"-->
+				<img src="images/icons/logo_complete.png" width="100px" alt="popvillagemarket">
 				<!--span id="print_nav">popvillage.com</span>
 				<span id="print_nav">info@popvillagemarket.com</span-->
 			</a>
@@ -223,6 +224,12 @@
 					<li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
 						<span class="topbar-child1">
 							<a href="mailto:info@popvillagemarket.com">info@popvillagemarket.com</a>
+						</span>
+					</li>
+
+					<li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
+						<span class="topbar-child1">
+							<a href="tel:08012345678">(+234)801-234-5678</a>
 						</span>
 					</li>
 
