@@ -105,7 +105,7 @@
 				<!-- Header Icon -->
 				<div class="header-icons">
 					<a href="#" class="header-wrapicon1 dis-block" style="color:#56164c;">
-						 <img src="images/icons/icon-header-01.png" class="header-icon1" alt="ICON"> &nbsp;
+						 <img src="images/icons/user.svg" class="header-icon1" alt="ICON"> &nbsp;
 						 <?php
 							 isset($username)? $msg = "<span class='purple'><a href='?pg=orders'>{$username}</a>"  :  $msg = "<span class=><a href='?pg=login'>Sign In</a></sapn>";
 							 echo $msg;
@@ -115,7 +115,7 @@
 					<span class="linedivide1"></span>
 
 					<div class="header-wrapicon2">
-						<img src="images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON" id="get_cart_item">
+						<img src="images/icons/shopping-cart.svg" class="header-icon1 js-show-header-dropdown" alt="ICON" id="get_cart_item">
 						<span class="header-icons-noti" id="cart_count">0</span>
 
 						<!-- Header cart noti -->
@@ -171,13 +171,13 @@
 				<!-- Header Icon mobile -->
 				<div class="header-icons-mobile">
 					<a href="#" class="header-wrapicon1 dis-block">
-						<img src="images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
+						<img src="images/icons/user.svg" class="header-icon1" alt="ICON">
 					</a>
 
 					<span class="linedivide2"></span>
 
 					<div class="header-wrapicon2">
-						<img src="images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
+						<img src="images/icons/shopping-cart.svg" class="header-icon1 js-show-header-dropdown" alt="ICON">
 						<span class="header-icons-noti" id="cart_count2">0</span>
 
 						<!-- Header cart noti -->

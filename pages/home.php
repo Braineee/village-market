@@ -16,7 +16,7 @@
 
                     <div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="zoomIn">
                         <!-- Button -->
-                        <a href="product.html" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+                        <a href="#all-category" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
                             Shop Now
                         </a>
                     </div>
@@ -34,7 +34,7 @@
 
                     <div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="zoomIn">
                         <!-- Button -->
-                        <a href="product.html" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+                        <a href="#all-category" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
                             Shop Now
                         </a>
                     </div>
@@ -53,7 +53,7 @@
 
                     <div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="slideInUp">
                         <!-- Button -->
-                        <a href="product.html" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+                        <a href="#all-category" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
                             Shop Now
                         </a>
                     </div>
@@ -72,7 +72,7 @@
 
                     <div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="rotateIn">
                         <!-- Button -->
-                        <a href="product.html" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+                        <a href="#all-category" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
                             Shop Now
                         </a>
                     </div>
@@ -84,7 +84,7 @@
 </section>
 
 <!-- Product -->
-<section class="newproduct bgwhite p-t-45 p-b-105">
+<section class="newproduct bgwhite p-t-45 p-b-105" id="all-category">
     <!--
     * loop through the list of categories
     * nested loop - loop throught the product under each of those category
