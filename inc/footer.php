@@ -107,6 +107,7 @@
 					<div class="effect1 w-size9">
 						<input class="sub-email s-text7 bg6 w-full p-b-5 placeholder-color-white" type="email" name="email_" placeholder="Enter your email" required>
 						<span class="effect1-line"></span>
+						<input type="hidden" name="form_token" value="<?php echo hash_hmac('sha256', Token::generate_unique('subscribe'), $token); ?>">
 					</div>
 
 					<div class="w-size2 p-t-20">

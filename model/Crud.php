@@ -20,7 +20,7 @@ class Crud {
 		$this->_sessionName = Config::get('session/session_name');
 		$this->_cookieName = Config::get('remember/cookies_name');
 	}
-    
+
     /*
 	 * This function creates a new table data in the database
 	 * Parameters = $fields(array))
@@ -28,11 +28,11 @@ class Crud {
 	*/
 	public function create($tablename, $fields = array()){
 		if (!$this->_db->insert($tablename, $fields)) {
-			//$this->_db->error_message();
+			//var_dump($this->_db);
 			throw new Exception('There was a problem creating data');
 		}
-    }
-    
+  }
+
 
     /*
 	 * This function updates a table data in the database
@@ -45,7 +45,7 @@ class Crud {
 		}
 	}
 
-    
+
     /*
 	 * This function deletes a table data in the database
 	 * Parameters = $fields(array), $id(integer)
