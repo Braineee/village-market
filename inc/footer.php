@@ -98,21 +98,24 @@
 
 			<div class="w-size8 p-t-30 p-l-15 p-r-15 respon3">
 				<h4 class="s-text12 p-b-30">
-					Sign In
+					Subscribe to our newsletter and price slash
 				</h4>
+				<div class="subscribe_message">
 
-
+				</div>
+				<form class="" name="subscribe">
 					<div class="effect1 w-size9">
-						<input class="s-text7 bg6 w-full p-b-5" type="text" name="email_" placeholder="Enter your email">
+						<input class="sub-email s-text7 bg6 w-full p-b-5 placeholder-color-white" type="email" name="email_" placeholder="Enter your email" required>
 						<span class="effect1-line"></span>
 					</div>
 
 					<div class="w-size2 p-t-20">
 						<!-- Button -->
-						<button type="submit" class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4">
-							Sign In
+						<button type="submit" class="subscribe flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4 is-lower-case">
+							Subscribe
 						</button>
 					</div>
+				</form>
 			</div>
 		</div>
 	</footer>
@@ -163,6 +166,7 @@
 	<script type="text/javascript" src="<?php echo BASE_URL; ?>ajax/get_cart_item.js"></script>
 	<script type="text/javascript" src="<?php echo BASE_URL; ?>ajax/checkout.js"></script>
 	<script type="text/javascript" src="<?php echo BASE_URL; ?>ajax/update.js"></script>
+	<script type="text/javascript" src="<?php echo BASE_URL; ?>ajax/subscribe_to_newsletter.js"></script>
 <!--===============================================================================================-->
 	<script src="<?php echo BASE_URL; ?>assets/js/main.js"></script>
 

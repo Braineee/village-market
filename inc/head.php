@@ -32,6 +32,7 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/vendor/slick/slick.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/util.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/testimonial.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL; ?>assets/css/main.css">
 <!--===============================================================================================-->
 <!-- JQUERY AND JAVASCRIPT -->

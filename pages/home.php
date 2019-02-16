@@ -192,8 +192,6 @@
 
         </div>
     </div>
-    <br>
-    <hr>
     <?php
                 }// close category loop
             }// close category iff
@@ -205,6 +203,47 @@
 
    </section>
 
+<!-- testimonial -->
+<section class="newproduct bgwhite p-t-45 p-b-105">
+  <div class="sec-title p-b-60">
+      <h3 class="m-text5 t-center">
+          testimonials from our customers
+      </h3>
+  </div>
+  <div class="row">
+      <div id="carouselExampleIndicators" class="carousel slide col-md-12" data-ride="carousel">
+        <div class="carousel-inner" style="padding-left:33%">
+          <!-- loop the table testimony -->
+          <?php
+            $get_testimonies = DB::getInstance()->get("testimonials", array("show_testimony","=",1));
+            foreach ($get_testimonies->results() as $testimony) {
+          ?>
+          <div class="carousel-item <?php if($testimony->testimonial_id == 1){echo 'active';}?> text-center">
+            <div class="w-50">
+              <i class="fa fa-quote-left fa-4x"></i><br>
+              <blockquote width="50px">
+  			    		<p><?php echo $testimony->testimony ?><br>
+                  <b>---- <?php echo $testimony->name ?><b>
+                </p>
+  			    	</blockquote>
+            </div>
+          </div>
+          <?php
+            }
+          ?>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+  </div>
+  <br>
+</section>
 
 <!-- Shipping -->
 <section class="shipping bgwhite p-b-46">

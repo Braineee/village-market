@@ -2431,3 +2431,12 @@ input.num-product::-webkit-inner-spin-button {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.is-lower-case{
+  text-transform: capitalize !important;
+}
+
+.placeholder-color-white::placeholder{
+  color: #fff;
+  font-size: 15px;
+}
