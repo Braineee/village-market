@@ -1,2 +1,2 @@
 # village-market
-village market is a traditional ecommerce site built on php
+village market is an ecommerce site for various continetal food item built on php
