@@ -1663,7 +1663,7 @@ li.sale-noti > a {
 
 .block2-labelsale::before {
   background-color: #e65540;
-  content: 'Sale';
+  content: 'Offer';
 }
 
 .block2-labelnew::before {

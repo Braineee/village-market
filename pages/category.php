@@ -118,14 +118,38 @@ if(isset($_GET['cat']) && $_GET['cat'] != ''){
                     ?>
 					<!-- Product -->
 					<div class="row">
-                        <?php
-                            // loop all the product in this category
-                            foreach($get_cat->results() as $cat_items){
-                        ?>
+            <?php
+                // loop all the product in this category
+                foreach($get_cat->results() as $cat_items){
+
+                  //check if the product is slashed
+                  $bonus_item_check = DB::getInstance()->get('offers', array('product_id', '=', $cat_items->product_id));
+                  if($bonus_item_check->error() == true){
+                      die('please reload this page');
+                  }
+                  $is_bonus = false;
+                  if($bonus_item_check->count() > 0){
+                    $is_bonus = true;
+                    $bonus_old_price = $bonus_item_check->first()->real_price;
+                    $bonus_price = $bonus_item_check->first()->bonus_price;
+                  }
+            ?>
 						<div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
 							<!-- Block2 -->
 							<div class="block2">
-								<div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
+                <?php
+                  if($is_bonus == true){
+                    //there is a price slash on this product
+                ?>
+                <div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelsale">
+                <?php
+                  }else{
+                   // there is no price slash on this product
+                ?>
+                <div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
+                <?php
+                  }
+                ?>
 									<img src="images/product_picture/<?php echo $cat_items->product_picture; ?>" height="300px" width="900px" alt="IMG-PRODUCT">
 
                   <?php
@@ -151,18 +175,37 @@ if(isset($_GET['cat']) && $_GET['cat'] != ''){
 
 								<div class="block2-txt p-t-20">
 									<a href="?pg=item-detail&item=<?php echo $cat_items->product_id; ?>" class="block2-name dis-block s-text3 p-b-5">
-                                        <?php if(isset($cat_items->product_name)){echo $cat_items->product_name;} ?>
+                    <?php if(isset($cat_items->product_name)){echo $cat_items->product_name;} ?>
 									</a>
-									<span class="block2-price m-text6 p-r-5">
-                                        &#8358;<?php if(isset($cat_items->product_price)){echo number_format($cat_items->product_price);} ?>
-									</span>
+
+                  <?php
+                    if($is_bonus == true){
+                      //there is a price slash on this product
+                  ?>
+                  <span class="block2-oldprice m-text7 p-r-5">
+                    &#8358;<?php echo number_format($bonus_old_price) ?>
+                  </span>
+
+                  <span class="block2-newprice m-text8 p-r-5">
+                    &#8358;<?php echo number_format($bonus_price) ?>
+                  </span>
+                  <?php
+                    }else{
+                     // there is no price slash on this product
+                  ?>
+                  <span class="block2-price m-text6 p-r-5">
+                      &#8358;<?php echo number_format($cat_items->product_price) ?>
+                  </span>
+                  <?php
+                    }
+                  ?>
 								</div>
 							</div>
-                        </div>
-                        <?php
-                            }
-                        ?>
-                    </div>
+            </div>
+              <?php
+                  }
+              ?>
+          </div>
 					<!-- Pagination -->
 					<!--div class="pagination flex-m flex-w p-t-26">
 						<a href="#" class="item-pagination flex-c-m trans-0-4 active-pagination">1</a>

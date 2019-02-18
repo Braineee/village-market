@@ -83,6 +83,111 @@
     </div>
 </section>
 
+<!-- product slash-- >
+<section class="newproduct bgwhite p-t-45 p-b-105" id="all-category">
+    <!--
+    * loop through the list of categories
+    * nested loop - loop throught the product under each of those category
+    -->
+    <?php
+        try{
+          //get the price offers
+          $query = "
+            SELECT offers.*, products.* FROM offers
+            INNER JOIN products ON offers.product_id = products.product_id
+            ORDER BY offer_id ASC
+          ";
+
+          $bonus_item = DB::getInstance()->query($query);
+
+          if($bonus_item->error() == true){
+              die('please reload this page');
+          }
+
+          $no_slash = false;
+
+          if($bonus_item->count() == 0){
+            $no_slash = true;
+          }
+
+    ?>
+    <br>
+    <div class="container" <?php if($no_slash == true){echo "style='display:none;'";}?>>
+        <div class="sec-title p-b-60">
+            <h3 class="m-text5 t-center">
+                Price slash & offers
+            </h3>
+        </div>
+
+        <!-- Slide2 -->
+        <div class="wrap-slick2">
+            <div class="slick2">
+                <?php
+                  $counter = 0;
+                  // loop through the products
+                  while($bonus_item->count() > $counter){
+                ?>
+                    <div class="item-slick2 p-l-15 p-r-15">
+                        <!-- Block2 -->
+                          <div class="block2">
+              							<div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelsale">
+              								<img src="images/product_picture/<?php echo $bonus_item->results()[$counter]->product_picture ?>" height="300px" width="900px" alt="IMG-PRODUCT">
+
+                              <?php
+                                if($bonus_item->results()[$counter]->out_of_stock == 1)
+                                  {
+                                    echo '<div class="over-lay">OUT OF STOCK!</div>';
+                                  }else{
+                              ?>
+                              <div class="block2-overlay trans-0-4">
+                                  <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
+                                      <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
+                                      <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
+                                  </a>
+
+                                  <div class="block2-btn-addcart w-size1 trans-0-4">
+                                      <!-- Button -->
+                                      <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4 add_cartt" data-quantity="1" data-name="<?php echo $bonus_item->results()[$counter]->product_name?>" data-id="<?php echo $bonus_item->results()[$counter]->product_id ?>">
+                                          Add to Cart
+                                      </button>
+                                  </div>
+                              </div>
+                              <?php } ?>
+              							</div>
+
+              							<div class="block2-txt p-t-20">
+                              <a href="?pg=item-detail&item=<?php echo $bonus_item->results()[$counter]->product_id ?>" class="block2-name dis-block s-text3 p-b-5">
+                                  <?php echo $bonus_item->results()[$counter]->product_name ?> &ensp; <!--span class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></span-->
+                              </a>
+
+              								<span class="block2-oldprice m-text7 p-r-5">
+              									&#8358;<?php echo number_format($bonus_item->results()[$counter]->real_price) ?>
+              								</span>
+
+              								<span class="block2-newprice m-text8 p-r-5">
+              									&#8358;<?php echo number_format($bonus_item->results()[$counter]->bonus_price) ?>
+              								</span>
+              							</div>
+              						</div>
+                        </div>
+                <?php
+                    $counter ++;
+                    }
+                ?>
+            </div>
+        </div>
+        <br>
+        <br>
+    </div>
+    <?php
+        }catch(Exception $e){
+            die($e->getMessage());
+        }// close try
+    ?>
+
+
+   </section>
+
 <!-- Product -->
 <section class="newproduct bgwhite p-t-45 p-b-105" id="all-category">
     <!--
@@ -128,7 +233,10 @@
                         die('please reload this page');
                     }
 
-                    if($all_item->count() == 0){
+                    $all_items = $all_item->results();
+                    $all_item_count = $all_item->count();
+
+                    if($all_item_count == 0){
                         echo '
                             <div class="alert alert-danger block">
                                 <strong><b>Oops!...</b><br><br>No Item was found in this category.</strong>
@@ -137,16 +245,42 @@
                     }
 
                     // loop through the products
-                    while($all_item->count() > $counter){
+                    while($all_item_count > $counter){
+
+                      //check if the product is slashed
+                      $bonus_item_check = DB::getInstance()->get('offers', array('product_id', '=', $all_items[$counter]->product_id));
+                      if($bonus_item_check->error() == true){
+                          die('please reload this page');
+                      }
+                      $is_bonus = false;
+                      if($bonus_item_check->count() > 0){
+                        $is_bonus = true;
+                        $bonus_old_price = $bonus_item_check->first()->real_price;
+                        $bonus_price = $bonus_item_check->first()->bonus_price;
+                      }
+
                 ?>
                     <div class="item-slick2 p-l-15 p-r-15">
                         <!-- Block2 -->
                         <div class="block2">
-                            <div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
 
-                                <img src="images/product_picture/<?php echo $all_item->results()[$counter]->product_picture ?>" height="300px" width="900px" alt="IMG-PRODUCT">
+                            <?php
+                              if($is_bonus == true){
+                                //there is a price slash on this product
+                            ?>
+                            <div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelsale">
+                            <?php
+                              }else{
+                               // there is no price slash on this product
+                            ?>
+                            <div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
+                            <?php
+                              }
+                            ?>
+
+                                <img src="images/product_picture/<?php echo $all_items[$counter]->product_picture ?>" height="300px" width="900px" alt="IMG-PRODUCT">
                                 <?php
-                                  if($all_item->results()[$counter]->out_of_stock == 1)
+                                  if($all_items[$counter]->out_of_stock == 1)
                                     {
                                       echo '<div class="over-lay">OUT OF STOCK!</div>';
                                     }else{
@@ -159,7 +293,7 @@
 
                                     <div class="block2-btn-addcart w-size1 trans-0-4">
                                         <!-- Button -->
-                                        <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4 add_cartt" data-quantity="1" data-name="<?php echo $all_item->results()[$counter]->product_name?>" data-id="<?php echo $all_item->results()[$counter]->product_id ?>">
+                                        <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4 add_cartt" data-quantity="1" data-name="<?php echo $all_items[$counter]->product_name?>" data-id="<?php echo $all_items[$counter]->product_id ?>">
                                             Add to Cart
                                         </button>
                                     </div>
@@ -168,13 +302,31 @@
                             </div>
 
                             <div class="block2-txt p-t-20">
-                                <a href="?pg=item-detail&item=<?php echo $all_item->results()[$counter]->product_id ?>" class="block2-name dis-block s-text3 p-b-5">
-                                    <?php echo $all_item->results()[$counter]->product_name ?> &ensp; <!--span class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></span-->
+                                <a href="?pg=item-detail&item=<?php echo $all_items[$counter]->product_id ?>" class="block2-name dis-block s-text3 p-b-5">
+                                    <?php echo $all_items[$counter]->product_name ?> &ensp; <!--span class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></span-->
                                 </a>
 
+                                <?php
+                                  if($is_bonus == true){
+                                    //there is a price slash on this product
+                                ?>
+                                <span class="block2-oldprice m-text7 p-r-5">
+                									&#8358;<?php echo number_format($bonus_old_price) ?>
+                								</span>
+
+                								<span class="block2-newprice m-text8 p-r-5">
+                									&#8358;<?php echo number_format($bonus_price) ?>
+                								</span>
+                                <?php
+                                  }else{
+                                   // there is no price slash on this product
+                                ?>
                                 <span class="block2-price m-text6 p-r-5">
-                                    &#8358;<?php echo number_format($all_item->results()[$counter]->product_price) ?>
+                                    &#8358;<?php echo number_format($all_items[$counter]->product_price) ?>
                                 </span>
+                                <?php
+                                  }
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -264,8 +416,6 @@
             <h4 class="m-text12 t-center">
                 <img src="images/icons/payment_logo.png" width="50%" alt="payment_logos">
             </h4>
-
-
         </div>
     </div>
 </section>
